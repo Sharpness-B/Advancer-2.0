@@ -1,0 +1,21 @@
+html, body {
+    background-color: black;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#game_canvas {
+    max-width: 100vh;
+    max-height: 100vh;
+
+    right: 50%;
+    bottom: 50%;
+    transform: translate(50%,50%);
+    position: absolute;
+
+    background-color: aquamarine;
+}

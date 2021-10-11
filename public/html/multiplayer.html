@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Advancer</title>
+        <meta   charset="utf-8">
+        <link   rel="stylesheet" type="text/css"  href="css/game.css">
+        <link   rel="icon"       type="image/png" href="media_assets/spaceshipIcon.png">
+
+        <script defer src="js/libraries/sequentialScriptInclusion/sequentialScriptInclusion.js"
+            onload="sequentialScriptInclusion([
+                'https:\/\/cdn.socket.io/socket.io-3.0.0.js',
+                'https:\/\/cdn.jsdelivr.net/npm/uuid@latest/dist/umd/uuidv4.min.js',
+                'js/multiplayer/multiplayer.js'
+            ]);">
+        </script>
+
+        <script defer src="js/libraries/sequentialScriptInclusion/sequentialScriptInclusion.js"
+            onload="sequentialScriptInclusion([
+                'js/libraries/cookie/cookie.js',
+                'js/music.js'
+            ]);">
+        </script>
+    </head>
+    <body>
+        <canvas id="game_canvas"></canvas>
+    </body>
+</html>

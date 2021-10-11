@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Advancer</title>
+        <meta   charset="utf-8">
+        <!--<meta   http-equiv="refresh" content="420; url=https://youtu.be/dQw4w9WgXcQ"/>-->
+        <link   rel="stylesheet" type="text/css"  href="css/homepage.css">
+        <link   rel="icon"       type="image/png" href="media_assets/spaceshipIcon.png">
+        
+        <script defer src='js/homepage/gui.js'></script>
+        <script defer src='js/homepage/upgrade.js'></script>
+
+        <script defer src="js/libraries/sequentialScriptInclusion/sequentialScriptInclusion.js"
+            onload="sequentialScriptInclusion([
+                'https:\/\/cdn.socket.io/socket.io-3.0.0.js',
+                'js/socket.js'
+            ]);">
+        </script>
+
+        <script defer src="js/libraries/sequentialScriptInclusion/sequentialScriptInclusion.js"
+            onload="sequentialScriptInclusion([
+                'js/libraries/cookie/cookie.js',
+                'js/music.js'
+            ]);">
+        </script>
+    </head>
+    <body>
+
+        <!-- OVERLAY 1. MAIN MENU -->
+
+        <canvas id="menu_canvas"></canvas>
+        <nav id="main_menu">
+            <ul id="list_of_content">
+                <h1>Advancer
+                    <svg id="logo_svg">
+                        <line x1="0"    x2="10%"  y1="0"    y2="0"    stroke="white" stroke-width="1"/>
+                        <line x1="0"    x2="0"    y1="0"    y2="30%"  stroke="white" stroke-width="1"/>
+                        <line x1="0"    x2="10%"  y1="100%" y2="100%" stroke="white" stroke-width="1"/>
+                        <line x1="0"    x2="0"    y1="100%" y2="70%"  stroke="white" stroke-width="1"/>
+                        <line x1="90%"  x2="100%" y1="100%" y2="100%" stroke="white" stroke-width="1"/>
+                        <line x1="100%" x2="100%" y1="100%" y2="70%"  stroke="white" stroke-width="1"/>
+                        <line x1="90%"  x2="100%" y1="0"    y2="0"    stroke="white" stroke-width="1"/>
+                        <line x1="100%" x2="100%" y1="0"    y2="30%"  stroke="white" stroke-width="1"/>
+                    </svg>
+                </h1>
+                <li class="li_option"><button class="button" id="multiplr">Laser your friends</button></li>
+                <li class="li_option"><button class="button" id="grinding">Grinding mode</button></li>
+                <li class="li_option"><button class="button" id="upgrades">Ludicrous upgrades</button></li>
+            </ul>
+        </nav>
+    
+        <!-- OVERLAY 2. UPGRADES MAIN MENU -->
+
+        <section id="upgr_body">
+            
+            <nav>
+                <canvas id="canvasPreview" width="600" height="600">
+            </nav>
+            
+            <nav class="list_of_content_upgr">
+                <ul>
+                    <li class="li_option_upgr">
+                        <img src="media_assets/armor.png" class="info" width="90px" height="90px">
+                        <span id="dotarmor1" class="dotFilled"></span>
+                        <span id="dotarmor2" class="dot"></span>
+                        <span id="dotarmor3" class="dot"></span>
+                        <span id="dotarmor4" class="dot"></span>
+                        <span id="dotarmor5" class="dot"></span>
+                        <button class="button_upgr" id="button_armor">10§</button>
+                        <p id="armor_price"></p>
+                    </li>
+                    <li class="li_option_upgr">
+                        <img src="media_assets/speed.png" class="info"  width="90px" height="90px">
+                        <span id="dotspeed1" class="dotFilled"></span>
+                        <span id="dotspeed2" class="dot"></span>
+                        <span id="dotspeed3" class="dot"></span>
+                        <span id="dotspeed4" class="dot"></span>
+                        <span id="dotspeed5" class="dot"></span>
+                        <button class="button_upgr" id="button_speed">10§</button>
+                        <p id="speed_price"></p>
+                    </li>
+                    <li class="li_option_upgr">
+                        <img src="media_assets/laser.png" class="info" width="90px" height="90px">
+                        <span id="dotlaser1" class="dotFilled"></span>
+                        <span id="dotlaser2" class="dot"></span>
+                        <span id="dotlaser3" class="dot"></span>
+                        <span id="dotlaser4" class="dot"></span>
+                        <span id="dotlaser5" class="dot"></span>
+                        <button class="button_upgr" id="button_laser">10§</button>
+                        <p id="laser_price"></p>
+                    </li>
+                    <li class="li_option_upgr">
+                        <img src="media_assets/missile.png" class="info" width="90px" height="90px">
+                        <span id="dotmissile1" class="dotFilled"></span>
+                        <span id="dotmissile2" class="dot"></span>
+                        <span id="dotmissile3" class="dot"></span>
+                        <span id="dotmissile4" class="dot"></span>
+                        <span id="dotmissile5" class="dot"></span>
+                        <button class="button_upgr" id="button_missile">10§</button>
+                        <p id="missile_price"></p>
+                    </li>
+                    <li class="li_option_upgr">
+                        <img src="media_assets/energy.png" class="info" width="90px" height="90px">
+                        <span id="dotenergy1" class="dotFilled"></span>
+                        <span id="dotenergy2" class="dot"></span>
+                        <span id="dotenergy3" class="dot"></span>
+                        <span id="dotenergy4" class="dot"></span>
+                        <span id="dotenergy5" class="dot"></span>
+                        <button class="button_upgr" id="button_energy">10§</button>
+                        <p id="energy_price"></p>
+                    </li>
+                    <li class="li_option_upgr_balance">
+                        <img src="media_assets/gold.png" class="info" width="90px" height="90px">
+                        <p id="balance">30§</p>
+                    </li>
+                </ul>
+            </nav>
+            <button id="go_back" class="button">Done!</button>
+        </section>
+    </body>
+</html>
