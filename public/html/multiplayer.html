@@ -4,8 +4,11 @@
         <title>Advancer</title>
         <meta   charset="utf-8">
         <link   rel="stylesheet" type="text/css"  href="css/game.css">
+        <link   rel="stylesheet" type="text/css"  href="css/multiplayer_overlay.css">
         <link   rel="icon"       type="image/png" href="media_assets/spaceshipIcon.png">
 
+        <script defer src='js/multiplayer/gui.js'></script>
+        
         <script defer src="js/libraries/sequentialScriptInclusion/sequentialScriptInclusion.js"
             onload="sequentialScriptInclusion([
                 'https:\/\/cdn.socket.io/socket.io-3.0.0.js',
@@ -23,5 +26,33 @@
     </head>
     <body>
         <canvas id="game_canvas"></canvas>
+
+        <!-- Intro and logs&chat overlay -->
+        <section id="section_multiplayer_overlay">
+            <article id="article_controls">
+                <div class="key" id="key_esc"><p>esc</p><pre>menu</pre></div>
+                <div class="key" id="key_w"><p>W</p><pre>tilt down</pre></div>
+                <div class="key" id="key_a"><p>A</p><pre>trun left</pre></div>
+                <div class="key" id="key_s"><p>S</p><pre>tilt up</pre></div>
+                <div class="key" id="key_d"><p>D</p><pre>trun right</pre></div>
+                <div class="key" id="key_sft"><p>shft</p><pre>to origin</pre></div>
+                <div class="key" id="key_space"><p>space</p><pre>boost forward</pre></div>
+            </article>
+
+            <article id="articleChat">
+                <ul id="ulChat">
+                    <li><b><pre>Welcome to the logs & chat!</pre></b></li>          
+                </ul>
+                <div id="divChatForm">
+                    <input placeholder="say hi!" id="inputTextChat" type=text>
+                    <button id="buttonSendChat">🚀</button>  
+                </div> 
+            </article>
+            
+            <nav id="navHomeGame">
+                <button id="buttonHome">Back Home</button>
+                <button id="buttonGame">All Systems Go!</button>                
+            </nav>
+        </section>
     </body>
 </html>

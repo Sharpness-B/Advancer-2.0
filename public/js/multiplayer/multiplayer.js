@@ -6,8 +6,35 @@ socket.on('connect', () => {
     socket.emit('storeClientInfo', { id: client_id, ship:{} });
 });
 
-socket.on('message', message => console.log(message) );
-const emit = message => socket.emit('message', message);
+
+
+const ulChat = document.getElementById("ulChat");
+const inputTextChat = document.getElementById("inputTextChat");
+const buttonSendChat = document.getElementById("buttonSendChat");
+
+function scrollChatToBottom() {
+    const elem = document.getElementById('ulChat');
+    elem.scrollTop = elem.scrollHeight;
+}
+socket.on('message', message => {
+    const li = document.createElement("li");
+    li.innerHTML = `<p>${message}</p>`;
+    ulChat.appendChild(li);
+    scrollChatToBottom();
+});
+socket.on('logs', message => {
+    const li = document.createElement("li");
+    li.innerHTML = `<pre>${message}</pre>`;
+    ulChat.appendChild(li);
+    scrollChatToBottom();
+});
+
+buttonSendChat.onclick = function sendMessage() {
+    message = inputTextChat.value;
+    inputTextChat.value = "";
+    socket.emit('message', message);
+}
+
 
 const width  = 1080;
 const height = 1920;

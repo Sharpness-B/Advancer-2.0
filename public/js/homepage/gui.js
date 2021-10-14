@@ -17,10 +17,10 @@ document.getElementById("multiplr").onclick = function() {
     musicCheck();
     location.href = "/multiplayer"; 
 }
-document.getElementById("grinding").onclick = function() {
-    musicCheck();
-    location.href = "/singleplayer"; 
-}
+// document.getElementById("grinding").onclick = function() {
+//     musicCheck();
+//     location.href = "/singleplayer"; 
+// }
 document.getElementById("go_back").onmouseover = function(){sound();}
 document.getElementById("go_back").onclick = function() {
     document.getElementById("upgr_body").style.display = "none";

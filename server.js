@@ -101,15 +101,6 @@ app.get('/multiplayer', (req, res) => {
 game(io);
 
 
-app.get('/singleplayer', (req, res) => {
-    if (!sess) res.redirect('/');
-
-    const fp = req.fingerprint.hash;
-    
-    res.sendFile(__dirname + '/public/html/multiplayer.html');
-});
-
-
 
 httpServer.listen(port, () => {
     console.log(`Advancer, a deadly serious multiplayer game. Check it out at http://localhost:${port}/`);
