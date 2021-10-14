@@ -5,7 +5,7 @@ I'm really happy with how this turned out, and would like to forward a big thank
 
 Now, in Advancer 2.0 users are automatically fingerprinted, logged in, and registered in firestore.
 
-You can of course lazer your friends (multiplayer), and flex your spaceship that you can upgrade with the game currency that you earn by spending time in grinding mode (singleplayer).
+You can of course lazer your friends (multiplayer), and flex your spaceship that you can upgrade with the game currency that you earn by spending time in the game. I have spent a fair amount of time working on the movements of the space ships, so make sure to show of some crazy acrobatics! 
 
 #### Tech stack:
  - our own 3d engine
