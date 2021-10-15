@@ -92,6 +92,7 @@ html, body {
     width: 6em;
     height: 2em;
     margin-top: 0.4em;
+    cursor: pointer;
 }
 
 .button_upgr:hover {
@@ -161,4 +162,13 @@ html, body {
 
 #canvasPreview {
     margin-right: 1em;
+}
+
+
+
+#main_menu, #upgr_body {
+    zoom: 0.6;
+}
+body {
+    overflow: hidden;
 }

@@ -17,12 +17,27 @@
                 'js/music.js'
             ]);">
         </script>
+
+        <script defer src="js/libraries/sequentialScriptInclusion/sequentialScriptInclusion.js"
+            onload="sequentialScriptInclusion([
+                'js/libraries/math/vec2.js',
+                'js/libraries/math/vec3.js',
+                'js/libraries/math/Matrix.js',
+
+                'js/libraries/flyengine/models.js',
+                'js/libraries/flyengine/modelsConstructor.js',
+                'js/libraries/flyengine/Camera.js',
+                'js/libraries/flyengine/drawMethods.js',
+
+                'js/homepage/preview_model.js'
+            ]);">
+        </script>
     </head>
     <body>
 
         <!-- OVERLAY 1. MAIN MENU -->
-
         <canvas id="menu_canvas"></canvas>
+
         <nav id="main_menu">
             <ul id="list_of_content">
                 <h1>Advancer

@@ -5,6 +5,7 @@ class Camera
     far;
     position;
     direction;
+    facingZ;
     
     constructor(position, direction, fov, near, far)
     {
@@ -13,6 +14,9 @@ class Camera
         this.far = far;
         this.position = position;
         this.direction = direction;
+        this.facingZ = direction.z > 0;
+        this.rotation = 0;
+        this.tiltation = 0;
     }
 
     get viewMatrix()
@@ -28,7 +32,7 @@ class Camera
     get cameraMatrix()
     {
         let p = this.position;
-        let d = this.direction;
+        let d = {...this.direction};
 
         // (T)ranslate to origin
         let T = [   [   1,    0,    0,    0],
@@ -42,8 +46,9 @@ class Camera
                         [                 0,                  1,                  0,                  0],
                         [-1*Math.sin(theta),                  0,    Math.cos(theta),                  0],
                         [                 0,                  0,                  0,                  1]    ];;
-
+        
         let phi = Math.atan(d.y/Math.sqrt( d.x**2 + d.z**2 ));
+        
         let Rx = [  [                 1,                  0,                  0,                  0],
                     [                 0,    Math.cos(  phi), -1*Math.sin(  phi),                  0],
                     [                 0,    Math.sin(  phi),    Math.cos(  phi),                  0],
@@ -63,14 +68,38 @@ class Camera
         let V = this.viewMatrix;
         let CV = Matrix.multiply(C, V);
 
-        let p4 = Matrix.multiply(CV, Matrix.v3tom(vec)); // Egentlig bytte CV og Matrix.v3tom(vec)
+        let p4 = Matrix.multiply(Matrix.v3tom(vec), CV); // Egentlig bytte CV og Matrix.v3tom(vec)
         
-        let w = p4[3][0];
+        let w = p4[0][3];
         
         let p3 = new vec3(p4[0][0]/w,
-                          p4[1][0]/w,
-                          p4[2][0]/w);
+                          p4[0][1]/w,
+                          p4[0][2]/w);
 
         return new vec2(p3.x/p3.z, p3.y/p3.z);
+    }
+
+
+
+    translateBy(vec) {
+        this.position = vec3.add(this.position, vec)
+    }
+
+    move(distance) {
+        let move = new vec3(0,0,distance)
+        move.transform(Matrix.rotateY(this.rotation))
+        move.transform(Matrix.rotateX(this.rotation))
+
+        this.translateBy(move);
+    }
+
+    rotate(radians) {
+        this.direction.transform(Matrix.rotateY(radians));
+        this.rotation += radians;
+    }
+
+    tilt(radians) {
+        this.direction.transform(Matrix.rotateX(radians));
+        this.tiltation += radians;
     }
 }

@@ -11,6 +11,11 @@ class vec3
         this.z = z;
     }
 
+    get copy()
+    {
+        return(new vec3(this.x, this.y, this.z));
+    }
+
     toString()
     {
         return("[" + this.x + ", " + this.y + ", " + this.z + "]");
@@ -67,6 +72,22 @@ class vec3
         this.z /= len;
     }
 
+    static new_normalize(vec)
+    {
+        let len = vec.length();
+        return new vec3(vec.x / len,
+                        vec.y / len,
+                        vec.z / len);
+    }
+
+    normalizeHalf()
+    {
+        let len = this.length();
+        this.x /= len*2;
+        this.y /= len*2;
+        this.z /= len*2;
+    }
+
     transform(mat)
     {
         let x = mat[0][0]*this.x +
@@ -97,13 +118,6 @@ class vec3
             v.y * u.z - v.z * u.y,
           -(v.x * u.z - v.z * u.x),
             v.x * u.y - v.y * u.x
-        );
-    }
-
-    static angle(v, u) 
-    {
-        return Math.acos(
-            this.dot(v, u) / ( v.length() * u.length() )
         );
     }
 }

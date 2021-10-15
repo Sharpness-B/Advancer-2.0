@@ -62,7 +62,7 @@ if (cnv1) {
 }
 
 /*      Updates canvas size on rezise    */
-let canvas    = document.getElementsByTagName("canvas")[0];
+let canvas    = document.getElementById("menu_canvas");
 canvas.height = window.innerHeight;
 canvas.width  = window.innerWidth;
 let width     = canvas.width;
