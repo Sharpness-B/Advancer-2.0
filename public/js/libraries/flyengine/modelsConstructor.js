@@ -34,7 +34,12 @@ class figure {
     }
 
     translateTo(vec) {
-        this.pos
+        this.rotate(-this.rotation);
+        this.tilt  (-this.tiltation);
+
+        const difference = vec3.subtract(vec, this.vert[this.vert.length-1]);
+
+        this.translateBy(difference);
     }
 
     translateBy(vec) {
