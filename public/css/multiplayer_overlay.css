@@ -151,8 +151,6 @@
 
 
 
-
-
 #navHomeGame {
     position: absolute;
     right: 50%;
@@ -171,4 +169,14 @@
     font-size: large;
     font-weight: bold;
     cursor: pointer;
+}
+
+
+
+#acrobatics {
+    font-size: 1.5em;
+    bottom: 0.5em;
+    position: absolute;
+    width: 100%;
+    text-align: center;   
 }
