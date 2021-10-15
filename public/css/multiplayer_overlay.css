@@ -43,7 +43,7 @@
     align-items: center; 
     flex-direction: column;
     border-radius: 20px;
-    border: 2px solid black;
+    border: 2px solid rgb(44, 44, 44);
     background: rgba(75, 0, 0, 0.1);
 }
 .key p {
@@ -93,7 +93,7 @@
     height: 80%;
     width: 90%;
 
-    border: 2px solid black;
+    border: 2px solid rgb(44, 44, 44);
     border-radius: 5px;
     background: rgba(75, 0, 0, 0.1);
 
@@ -103,7 +103,8 @@
 #articleChat ul {
     list-style: none;
     overflow-y: hidden;
-    max-height: 100%;
+    overflow-x: hidden;
+    max-height: calc(100% - 10px - 2em);
 }
 #articleChat li {
     word-break: break-all;
@@ -112,6 +113,40 @@
 #divChatForm {
     position: absolute;
     bottom: 5px;
+}
+
+
+#divChatForm {
+    width: calc(100% - 15px);
+    display: inline-block;
+    background-color: rgb(44, 44, 44);
+    border: 3px solid rgb(44, 44, 44);
+    border-radius: 5px;
+}
+
+ 
+
+#divChatForm input {
+    width: calc(100% - 15px - 2em);
+    height: 2em;
+    text-align: start;
+    padding-left: 0.7em;
+    border: 0;
+    border-radius: 3px;
+    font-size: 1em;
+}
+
+ 
+
+#divChatForm button {
+    position: absolute;
+    height: 2em;
+    width: 2em;
+    right: 0;
+    border: 0;
+    /* border-left: 3px solid blue; */
+    background-color: rgb(44, 44, 44);
+    cursor: pointer;
 }
 
 
@@ -130,7 +165,7 @@
 
 #navHomeGame button {
     border-radius: 5px;
-    border: 2px solid black;
+    border: 2px solid rgb(44, 44, 44);
     background: rgb(146, 239, 255);
     padding: 0 0.5em;
     font-size: large;

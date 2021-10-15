@@ -65,7 +65,7 @@ function game(io) {
             console.log(socket.id, "has connected", 
                         "\nnumber of players:", socketID.length.toString());
 
-            io.emit('logs', `${socket.id} has connected <br> number of players: ${socketID.length.toString()}`);
+            io.emit('logs', `${socket.id} has connected<br>number of players: ${socketID.length.toString()}`);
         });
         
 
@@ -73,9 +73,11 @@ function game(io) {
     
         // for testing / chat
         socket.on('message', (message) =>     {
-            const text = `${socket.id.substring(0,2)} says: ${message}`;
-            console.log(text);
-            io.emit('message', text);   
+            if (message!="") {
+                const text = `${socket.id.substring(0,2)} says: ${message}`;
+                console.log(text);
+                io.emit('message', text);  
+            }
         });
     
 
@@ -107,7 +109,7 @@ function game(io) {
             console.log(socket.id, "has disconnected", 
                         "\nnumber of players:", socketID.length.toString());
 
-            io.emit('logs', `${socket.id} has disconnected <br> number of players: ${socketID.length.toString()}`);
+            io.emit('logs', `${socket.id} has disconnected<br>number of players: ${socketID.length.toString()}`);
         });
     }); 
 

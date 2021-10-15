@@ -1,0 +1,9 @@
+#buttonToggleVolume {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 3em;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}

@@ -1,13 +1,8 @@
 const socket = io();
 
-const client_id = uuidv4();
-
-socket.on('connect', () => {
-    socket.emit('storeClientInfo', { id: client_id, ship:{} });
-});
-
-
-
+  /////////////////
+ // chat & logs //
+/////////////////
 const ulChat = document.getElementById("ulChat");
 const inputTextChat = document.getElementById("inputTextChat");
 const buttonSendChat = document.getElementById("buttonSendChat");
@@ -29,16 +24,31 @@ socket.on('logs', message => {
     scrollChatToBottom();
 });
 
-buttonSendChat.onclick = function sendMessage() {
+function sendMessage() {
     message = inputTextChat.value;
     inputTextChat.value = "";
     socket.emit('message', message);
 }
+addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        sendMessage()
+    }
+});
+buttonSendChat.onclick = sendMessage;
 
 
-const width  = 1080;
-const height = 1920;
 
+  //////////
+ // game //
+//////////
+const client_id = uuidv4();
+
+socket.on('connect', () => {
+    socket.emit('storeClientInfo', { id: client_id, ship:{} });
+});
+
+const width  = 1920;
+const height = 1080;
 
 
 class Game {

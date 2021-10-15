@@ -14,7 +14,6 @@ You can of course lazer your friends (multiplayer), and flex your spaceship that
  - socket.io
  - firebase
 
-
 # Demo
 
 
