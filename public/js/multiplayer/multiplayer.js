@@ -77,6 +77,11 @@ ctx.translate(width/2, height/2);
 canvas.height = height;
 canvas.width  = width;
 
+if (innerHeight>height || innerWidth>width) {
+    const aspectRatio = width/height;
+    if (innerHeight*aspectRatio < innerWidth) canvas.style.height = innerHeight.toString() + "px";
+    else                                      canvas.style.width  = innerWidth .toString() + "px";
+}
 
 document.addEventListener('keydown', (e) => {
     socket.emit('keydown', e.key);
