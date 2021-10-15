@@ -17,3 +17,24 @@ html, body {
     transform: translate(50%,50%);
     position: absolute;
 }
+
+.li_option_upgr_balance {
+    display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 0.5em;
+    right: 5em; 
+}
+
+.li_option_upgr_balance img {
+    height: 3em;
+    width: auto;
+}
+
+.li_option_upgr_balance #balance {
+    font-size: 2em;
+    color: white;
+}

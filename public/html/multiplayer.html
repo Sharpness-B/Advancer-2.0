@@ -9,6 +9,7 @@
         <link   rel="icon"       type="image/png" href="media_assets/spaceshipIcon.png">
 
         <script defer src='js/multiplayer/gui.js'></script>
+        <script defer src='js/multiplayer/earn_gold.js'></script>
         
         <script defer src="js/libraries/sequentialScriptInclusion/sequentialScriptInclusion.js"
             onload="sequentialScriptInclusion([
@@ -59,7 +60,12 @@
         </section>
 
 
-        <!-- Toggle volume -->
+        <!-- Golg Balance and Toggle volume -->
+        <li class="li_option_upgr_balance">
+            <img src="media_assets/gold.png" class="info" width="90px" height="90px">
+            <p id="balance"></p>
+        </li>
+
         <button id="buttonToggleVolume"></button>
     </body>
 </html>

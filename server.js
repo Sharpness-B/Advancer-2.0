@@ -4,6 +4,7 @@ const firebaseConfig = require('./modules/db/config');
 
 const login = require('./modules/db/login');
 const handle_transaction = require('./modules/db/handle_transaction');
+const add_gold = require('./modules/db/add_gold');
 
 const firebaseApp = initializeApp(firebaseConfig);
 const firestore = getFirestore(firebaseApp);
@@ -47,7 +48,6 @@ let sess; // global session, NOT recommended
 
 app.get('/', (req, res) => {
     sess=req.session;
-
     const fp = req.fingerprint.hash;
     sess.fp = fp;
 
@@ -90,12 +90,37 @@ app.post('/get_balances', (req, res) => {
 
 
 app.get('/multiplayer', (req, res) => {
-    // if (!sess) res.redirect('/');
-
-    
+    sess=req.session;
     const fp = req.fingerprint.hash;
+    sess.fp = fp;
 
-    res.sendFile(__dirname + '/public/html/multiplayer.html');
+    login(firestore, fp).then(balances => {
+        sess.balances = balances;
+        console.log('---> login complete', balances);
+
+        res.sendFile(__dirname + '/public/html/multiplayer.html');
+    });
+});
+
+// endpoint for adding gold to wallets
+app.post('/add_gold', (req, res) => {
+    // loops every 0.25 seconds until user is logged in and sess.balances is defined
+    (function wait_until_logged_in(){
+        if (typeof sess/*.balances*/ !== "undefined") {
+            if (typeof sess.fp !== "undefined" || typeof sess.balances !== "undefined") {
+                add_gold(firestore, 30, sess.fp, sess.balances).then(balances => {
+                    sess.balances = balances;
+                    res.json(balances);
+                });
+            }
+            else {
+                setTimeout(wait_until_logged_in, 250);
+            }
+        }
+        else {
+            setTimeout(wait_until_logged_in, 250);
+        }
+    }())
 });
 
 game(io);
