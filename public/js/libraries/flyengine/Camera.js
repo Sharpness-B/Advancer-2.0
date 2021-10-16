@@ -1,3 +1,12 @@
+// if node environment
+if (typeof process === "object" && typeof require === "function") {
+    global.vec2 = require("./../math/vec2");
+    global.vec3 = require("./../math/vec3");
+    global.Matrix = require("./../math/Matrix");
+}
+
+
+
 class Camera
 {
     fov;
@@ -7,7 +16,7 @@ class Camera
     direction;
     facingZ;
     
-    constructor(position, direction, fov, near, far)
+    constructor(position, direction, fov, near, far, rotation, tiltation)
     {
         this.fov = fov;
         this.near = near;
@@ -15,8 +24,8 @@ class Camera
         this.position = position;
         this.direction = direction;
         this.facingZ = direction.z > 0;
-        this.rotation = 0;
-        this.tiltation = 0;
+        this.rotation  = (typeof rotation == "undefined") ? 0 : rotation;
+        this.tiltation = (typeof tiltation == "undefined") ? 0 : tiltation;
     }
 
     get viewMatrix()
@@ -102,4 +111,11 @@ class Camera
         this.direction.transform(Matrix.rotateX(radians));
         this.tiltation += radians;
     }
+}
+
+
+
+// if node environment
+if (typeof process === "object" && typeof require === "function") {
+    module.exports = Camera;
 }

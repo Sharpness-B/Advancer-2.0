@@ -52,6 +52,8 @@ socket.on('connect', () => {
     socket.emit('storeClientInfo', { id: client_id, ship:{} });
 });
 
+
+
 // game dimensions
 const width  = 1920;
 const height = 1080;
@@ -82,27 +84,7 @@ window.addEventListener('resize', maximizeWithAndHeight);
 
 
 
-
-
-
-class Game {
-    constructor(ctx) {
-        this.ctx = ctx;
-    }
-    draw(data) {
-        this.ctx.clearRect(0, 0, width, height);
-
-        data.forEach(player => {
-            if (player.client_id === client_id) this.ctx.fillStyle = "purple";
-            else                                this.ctx.fillStyle = "red";
-
-            this.ctx.beginPath();
-            this.ctx.arc(player.x, player.y, 50, 0, 2 * Math.PI);
-            this.ctx.fill();
-        });
-    }
-}
-
+// registrer and send keyboard events
 document.addEventListener('keydown', (e) => {
     socket.emit('keydown', e.key);
 });
@@ -111,8 +93,78 @@ document.addEventListener('keyup', (e) => {
 	socket.emit('keyup', e.key);
 });
 
+// draw game on new frame
+function drawFrame(data) {
+    window.scale = ctx.canvas.width/2;
+
+    // get this users camera to recreate the camera object - becuse: (looses method in io emit)
+    const you = data.players.find(player => player.client_id === client_id);
+    window.cam = new Camera(
+        new vec3(
+            you.camera.position.x,
+            you.camera.position.y,
+            you.camera.position.z
+        ),
+        new vec3(
+            you.camera.direction.x,
+            you.camera.direction.y,
+            you.camera.direction.z
+        ),
+        you.camera.fov,
+        you.camera.near,
+        you.camera.far,
+
+        you.camera.rotation,
+        you.camera.tiltation
+    );
+
+    // light
+    window.light = data.lights[0];
 
 
-const game = new Game(ctx);
+      //////////
+     // draw //
+    //////////
 
-socket.on('frame', data => game.draw(data) );
+    // clear screen
+    ctx.clearRect(-ctx.canvas.width/2, -ctx.canvas.height/2, ctx.canvas.width, ctx.canvas.height);
+
+    // draw jets
+    data.players.forEach(player => {
+        DrawModel(player.jet);
+    });
+
+    // draw comets
+    data.comets.forEach(comet => {
+        DrawModel(comet);
+    });
+}
+
+
+
+// listen for new frame
+socket.on('frame', data => drawFrame(data) );
+
+
+
+
+
+// class Simple2dGame {
+//     constructor(ctx) {
+//         this.ctx = ctx;
+//     }
+//     draw(data) {
+//         this.ctx.clearRect(0, 0, width, height);
+//
+//         data.forEach(player => {
+//             if (player.client_id === client_id) this.ctx.fillStyle = "purple";
+//             else                                this.ctx.fillStyle = "red";
+//
+//             this.ctx.beginPath();
+//             this.ctx.arc(player.x, player.y, 50, 0, 2 * Math.PI);
+//             this.ctx.fill();
+//         });
+//     }
+// }
+// const game = new Simple2dGame(ctx);
+// socket.on('frame', data => game.draw(data) );

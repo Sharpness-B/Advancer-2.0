@@ -106,3 +106,10 @@ class vec2
         return new vec3(this.x, this.y, z);
     }
 }
+
+
+
+// if node environment
+if (typeof process === "object" && typeof require === "function") {
+    module.exports = vec2;
+}

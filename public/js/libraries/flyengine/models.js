@@ -1,3 +1,10 @@
+// if node environment
+if (typeof process === "object" && typeof require === "function") {
+    global.vec3 = require("./../math/vec3");
+}
+
+
+
 const figures = {
     cube: {
         vert: [
@@ -279,3 +286,10 @@ const lights = {
         pos: new vec3(0.0, 0.5, -5.0)
     }
 };
+
+
+
+// if node environment
+if (typeof process === "object" && typeof require === "function") {
+    module.exports = {figures, lights};
+}

@@ -1,3 +1,15 @@
+// if node environment
+if (typeof process === "object" && typeof require === "function") {
+    global.vec3 = require("./../math/vec3");
+    global.Matrix = require("./../math/Matrix");
+
+    const models = require("./../flyengine/models");
+    global.figures = models.figures;
+    global.lights  = models.lights;
+}
+
+
+
 class illumination {
     constructor(type, pos, strength) {
         this.vert  = lights[type].vert;
@@ -129,4 +141,11 @@ class figure {
 
         this.tiltation += radians;
     }
+}
+
+
+
+// if node environment
+if (typeof process === "object" && typeof require === "function") {
+    module.exports = {figure, illumination};
 }

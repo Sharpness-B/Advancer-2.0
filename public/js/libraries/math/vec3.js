@@ -121,3 +121,10 @@ class vec3
         );
     }
 }
+
+
+
+// if node environment
+if (typeof process === "object" && typeof require === "function") {
+    module.exports = vec3;
+}
