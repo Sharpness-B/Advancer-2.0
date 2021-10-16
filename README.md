@@ -7,7 +7,7 @@ I would like to forward a big thanks to Kiran and Jacob for the great effort in 
 
 Now, in Advancer 2.0 users are automatically fingerprinted, logged in, and registered in firestore. I've improved upon the 3d engine.
 
-You can of course lazer your friends (multiplayer), and flex your spaceship that you can upgrade with the game currency that you earn by spending time in the game. I have spent a fair amount of time working on the movements of the space ships, so make sure to show of some crazy acrobatics! 
+You can of course blast your friends with space bullets (multiplayer), and purchase upgrades with gold that you earn by spending time in the game. I have spent a fair amount of time working on the movements of the spaceships, so make sure to show off some crazy acrobatics! 
 
 Can you figure out what acrobatics that make you earn gold?
 
