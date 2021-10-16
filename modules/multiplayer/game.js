@@ -1,5 +1,6 @@
 const {figure, illumination} = require('./../../public/js/libraries/flyengine/modelsConstructor');
 const Camera                 = require('./../../public/js/libraries/flyengine/Camera');
+const vec3                   = require('./../../public/js/libraries/math/vec3');
 
 
 class Player {
