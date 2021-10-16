@@ -7,7 +7,8 @@ class Player {
         this.id = id; 
         this.client_id = client_id;
 
-        this.jet = new figure("crabWing", undefined, new vec3(x,y,z), 1);
+        this.jet = new figure("crabWing", undefined, new vec3(x,y,z), 3);
+        this.jet.rotate(Math.random()*Math.PI*2)
 
         this.camera = new Camera(   new vec3(0.0, 100.0, 100.0), // Pos
                                     new vec3(0.0, -1.0, -1.0),  // Dir
@@ -31,21 +32,35 @@ class Player {
 
 
 // commets and lights
-const lights = [new illumination("upgradesLight", new vec3(-2, 2, -3), 0.5)];
-const commets = [];
+const lights = [new illumination("upgradesLight", new vec3(100, 100, 0), 0.5)];
+const commets = [
+    new figure("icosahedron", undefined, new vec3( 5,   40,   0),  3),
+    new figure("icosahedron", undefined, new vec3( 20,  0,    10), 2),
+    new figure("icosahedron", undefined, new vec3( 50,  30,   0),  5),
+    new figure("icosahedron", undefined, new vec3( 60, -30,   20), 3),
+    new figure("icosahedron", undefined, new vec3( 0,   0,    10), 0.5),
+    new figure("icosahedron", undefined, new vec3(-90,  20,  -30), 25),
+    new figure("icosahedron", undefined, new vec3(-50,  0,    20), 1.5),
+    new figure("icosahedron", undefined, new vec3(-20, -30,   20), 15),
+];
 
+commets.forEach(c => {
+    c.rotate(Math.random()*Math.PI*2)
+    c.tilt  (Math.random()*Math.PI*2)
+})
 
 
 // move, accellerate and jerk (derivative of accel) - return object describing the frame
 function update(players,cnt) {
+    const movement_scale = 8
     players.forEach(player => {
-        if      (player.keys.a && !player.keys.d) player.jet.rotate(-0.05);
-        else if (player.keys.d && !player.keys.a) player.jet.rotate( 0.05);
+        if      (player.keys.a && !player.keys.d) player.jet.rotate(-0.01*movement_scale);
+        else if (player.keys.d && !player.keys.a) player.jet.rotate( 0.01*movement_scale);
 
-        if      (player.keys.w && !player.keys.s) player.jet.tilt(-0.05);
-        else if (player.keys.s && !player.keys.w) player.jet.tilt( 0.05);
+        if      (player.keys.w && !player.keys.s) player.jet.tilt(-0.01*movement_scale);
+        else if (player.keys.s && !player.keys.w) player.jet.tilt( 0.01*movement_scale);
 
-        if      (player.keys[" "])  player.jet.accelerate(-0.05);
+        if      (player.keys[" "])  player.jet.accelerate(-0.01*movement_scale);
         else if (player.keys.Shift) player.jet.translateTo(new vec3(0,0,0));
 
         player.jet.moveForvard()
@@ -131,7 +146,7 @@ function game(io) {
     
 
     // game loop
-    const FRAME_RATE = 20
+    const FRAME_RATE = 40
     let cnt = 0
 
     const intervalId = setInterval(() => {
