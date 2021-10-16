@@ -20,7 +20,8 @@ class Player {
             "s":     false,
             "d":     false,    
             " ":     false,
-            "Shift": false
+            "Shift": false,
+            "Enter": false,
         }
 
         if (players.length==1) {
@@ -31,7 +32,7 @@ class Player {
 
 
 
-// commets and lights
+// commets, lights and bullets
 const lights = [new illumination("upgradesLight", new vec3(100, 100, 0), 0.5)];
 const commets = [
     new figure("icosahedron", undefined, new vec3( 5,   40,   0),  3),
@@ -44,14 +45,21 @@ const commets = [
     new figure("icosahedron", undefined, new vec3(-20, -30,   20), 15),
 ];
 
+let bullets = [];
+
 commets.forEach(c => {
     c.rotate(Math.random()*Math.PI*2)
     c.tilt  (Math.random()*Math.PI*2)
 })
 
 
+// registry of players and socket ids
+let players = [];
+let socketID = [];
+
+
 // move, accellerate and jerk (derivative of accel) - return object describing the frame
-function update(players,cnt) {
+function update() {
     const movement_scale = 8
     players.forEach(player => {
         if      (player.keys.a && !player.keys.d) player.jet.rotate(-0.01*movement_scale);
@@ -63,21 +71,32 @@ function update(players,cnt) {
         if      (player.keys[" "])  player.jet.accelerate(-0.01*movement_scale);
         else if (player.keys.Shift) player.jet.translateTo(new vec3(0,0,0));
 
+        // shoot bullet
+        if (player.keys.Enter) {
+            const bullet = player.jet.shoot();
+            bullet.frames_left = 100;
+            bullet.speed = -5;
+            bullets.push( bullet );
+        }
+
         player.jet.moveForvard()
     })
+
+    bullets.forEach(bullet => {
+        bullet.frames_left --;
+        bullet.moveForvard(resistance=0)
+    });
+
+    bullets = bullets.filter(bullet => bullet.frames_left > 0);
 
     return {
         players: players,
         comets: commets,
-        lights: lights
+        lights: lights,
+        bullets: bullets
     }
 }
 
-
-
-// registry of players and socket ids
-let players = [];
-let socketID = [];
 
 function game(io) {
     io.on('connection', (socket) => {
@@ -115,7 +134,7 @@ function game(io) {
         socket.on('keydown', (key) => {
             const player = players.find(p => p.id === socket.id);
 
-            if (["w", "a", "s", "d", " ", "Shift"].includes(key)) {
+            if (["w", "a", "s", "d", " ", "Shift", "Enter"].includes(key)) {
                 player.keys[key] = true;
             }
         });
@@ -123,7 +142,7 @@ function game(io) {
         socket.on('keyup', (key) => {
             const player = players.find(p => p.id === socket.id);
             
-            if (["w", "a", "s", "d", " ", "Shift"].includes(key)) {
+            if (["w", "a", "s", "d", " ", "Shift", "Enter"].includes(key)) {
                 player.keys[key] = false;
             }
         });
@@ -146,11 +165,10 @@ function game(io) {
     
 
     // game loop
-    const FRAME_RATE = 40
-    let cnt = 0
+    const FRAME_RATE = 40;
 
     const intervalId = setInterval(() => {
-        data = update(players,cnt++);
+        data = update();
         
         io.sockets.emit("frame", data);
     }, 1000 / FRAME_RATE);

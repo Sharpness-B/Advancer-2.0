@@ -141,6 +141,14 @@ class figure {
 
         this.tiltation += radians;
     }
+
+    shoot() {
+        const bullet = new figure("icosahedron", undefined, this.vert[this.vert.length-1], 1);
+        bullet.rotate(this.rotation);
+        bullet.tilt  (this.tiltation);
+
+        return bullet;
+    }
 }
 
 

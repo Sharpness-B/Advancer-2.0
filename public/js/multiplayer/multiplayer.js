@@ -155,6 +155,10 @@ function drawFrame(data) {
     data.comets.forEach(comet => {
         DrawModel(comet);
     });
+
+    data.bullets.forEach(bullet => {
+        DrawModel(bullet);
+    });
 }
 
 
