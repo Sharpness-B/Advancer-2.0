@@ -93,30 +93,39 @@ document.addEventListener('keyup', (e) => {
 	socket.emit('keyup', e.key);
 });
 
+
+
 // draw game on new frame
 function drawFrame(data) {
     window.scale = ctx.canvas.width/2;
 
     // get this users camera to recreate the camera object - becuse: (looses method in io emit)
-    const you = data.players.find(player => player.client_id === client_id);
-    window.cam = new Camera(
-        new vec3(
-            you.camera.position.x,
-            you.camera.position.y,
-            you.camera.position.z
-        ),
-        new vec3(
-            you.camera.direction.x,
-            you.camera.direction.y,
-            you.camera.direction.z
-        ),
-        you.camera.fov,
-        you.camera.near,
-        you.camera.far,
+    try {
+        const you = data.players.find(player => player.client_id === client_id);
+        window.cam = new Camera(
+            new vec3(
+                you.camera.position.x,
+                you.camera.position.y,
+                you.camera.position.z
+            ),
+            new vec3(
+                you.camera.direction.x,
+                you.camera.direction.y,
+                you.camera.direction.z
+            ),
+            you.camera.fov,
+            you.camera.near,
+            you.camera.far,
 
-        you.camera.rotation,
-        you.camera.tiltation
-    );
+            you.camera.rotation,
+            you.camera.tiltation
+        );
+    } 
+    catch {
+        window.cam = new Camera( new vec3(0.0, 100.0, 100.0), // Pos
+                                 new vec3(0.0, -1.0, -1.0),  // Dir
+                                 1.6, 1.0, -5.0);           // FOV, near, far
+    }
 
     // light
     window.light = data.lights[0];
@@ -130,9 +139,17 @@ function drawFrame(data) {
     ctx.clearRect(-ctx.canvas.width/2, -ctx.canvas.height/2, ctx.canvas.width, ctx.canvas.height);
 
     // draw jets
-    data.players.forEach(player => {
-        DrawModel(player.jet);
+    let h = [
+        new figure("crabWing", undefined, new vec3(0,0,10), 1),
+        new figure("crabWing", undefined, new vec3(0,10,0), 1),
+    ]
+    h[0].rotate(5)
+    data.players.forEach((player, index) => {
+        const clone = new figure("crabWing", undefined, new vec3(0,0,0), 1)
+        DrawModel(player.jet)
     });
+
+    // console.log(data.players)
 
     // draw comets
     data.comets.forEach(comet => {
@@ -154,7 +171,7 @@ socket.on('frame', data => drawFrame(data) );
 //         this.ctx = ctx;
 //     }
 //     draw(data) {
-//         this.ctx.clearRect(0, 0, width, height);
+//         this.ctx.clearRect(-this.ctx.canvas.width/2, -this.ctx.canvas.height/2, this.ctx.canvas.width, this.ctx.canvas.height);
 //
 //         data.forEach(player => {
 //             if (player.client_id === client_id) this.ctx.fillStyle = "purple";

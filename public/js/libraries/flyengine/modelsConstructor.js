@@ -21,7 +21,7 @@ class illumination {
 
 class figure {
     constructor(type, color, pos, scalar) {
-        this.vert  = figures[type].vert;
+        this.vert  = JSON.parse(JSON.stringify( figures[type] )).vert;
         this.face  = figures[type].face;
         this.color = (typeof color == "undefined") ? figures[type].color : color;
         this.pos   = (typeof pos   == "undefined") ? figures[type].pos   : pos;
