@@ -169,7 +169,7 @@ function game(io) {
     const FRAME_RATE = 40;
 
     const intervalId = setInterval(() => {
-        data = update();
+        const data = update();
         
         io.sockets.emit("frame", data);
     }, 1000 / FRAME_RATE);
