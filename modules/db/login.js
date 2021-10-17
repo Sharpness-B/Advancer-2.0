@@ -1,7 +1,7 @@
 const { doc, getDoc, setDoc } = require('firebase/firestore');
 
-async function login(firestore, fp) {
-    const docRef = doc(firestore, "users", fp);
+async function login(firestore, fp_hash, fp_json_str) {
+    const docRef = doc(firestore, "users", fp_hash);
     const docSnap = await getDoc(docRef);
 
     // if user already exists
@@ -19,9 +19,11 @@ async function login(firestore, fp) {
             laser: 1,
             missile: 1,
             energy: 1,
+
+            fingerprint: fp_json_str
         }
 
-        await setDoc(doc(firestore, "users", fp), balances); // .then(() => {return balances;});
+        await setDoc(doc(firestore, "users", fp_hash), balances); // .then(() => {return balances;});
 
         return balances;
     }

@@ -20,6 +20,7 @@ const game = require('./modules/multiplayer/game');
 
 const fingerprint = require('express-fingerprint');
 const session = require('express-session');
+const { json } = require('express/lib/response');
 
 const port = process.env.PORT || 3000;
 
@@ -48,10 +49,10 @@ let sess; // global session, NOT recommended
 
 app.get('/', (req, res) => {
     sess=req.session;
-    const fp = req.fingerprint.hash;
-    sess.fp = fp;
+    const fp = req.fingerprint;
+    sess.fp = fp.hash;
 
-    login(firestore, fp).then(balances => {
+    login(firestore, fp.hash, JSON.stringify(fp)).then(balances => {
         sess.balances = balances;
         console.log('---> login complete', balances);
     });
@@ -91,10 +92,10 @@ app.post('/get_balances', (req, res) => {
 
 app.get('/multiplayer', (req, res) => {
     sess=req.session;
-    const fp = req.fingerprint.hash;
-    sess.fp = fp;
+    const fp = req.fingerprint;
+    sess.fp = fp.hash;
 
-    login(firestore, fp).then(balances => {
+    login(firestore, fp.hash, JSON.stringify(fp)).then(balances => {
         sess.balances = balances;
         console.log('---> login complete', balances);
 

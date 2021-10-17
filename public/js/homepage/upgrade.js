@@ -38,7 +38,7 @@ function fetch_and_update_ui(url) {
                 response.text()
                         .then(text => JSON.parse(text))
                         .then(balances => {
-                            console.log(balances);
+                            // console.log(balances);
                             
                             updateDotColors(balances);
                             updatePrices(balances);
@@ -61,7 +61,7 @@ fetch_and_update_ui('/get_balances')
 // handle purchase, then update ui
 upgrades.forEach(upgrade => {
     document.getElementById('button_' + upgrade).onclick = function() {
-        console.log(upgrade);
+        // console.log(upgrade);
 
         fetch_and_update_ui(`/transaction/${upgrade}`)
     };
