@@ -11,7 +11,7 @@ I would like to forward a big thanks to [Kiran](https://github.com/Vaakir) and [
 
 Now, in Advancer 2.0 users are automatically fingerprinted, logged in, and registered in firestore. I've improved upon the 3d engine, and added controls to the 3d objects. The app is automatically deployd to [herokuapp.com](https://advancer20.herokuapp.com/) on every push to the github repo.
 
-You can of course blast your friends with space bullets (multiplayer), and purchase upgrades with gold that you earn by spending time in the game. I have spent a fair amount of time working on the movements of the spaceships, so make sure to show off some crazy acrobatics! 
+You can of course blast your friends with space bullets (multiplayer), and purchase upgrades with gold that you earn doing acrobatics in the game. I have spent a fair amount of time working on the movements of the spaceships, so make sure to show off some crazy acrobatics! 
 
 Can you figure out what acrobatics that make you earn gold?
 
