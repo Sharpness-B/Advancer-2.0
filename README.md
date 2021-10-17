@@ -23,11 +23,11 @@ Can you figure out what acrobatics that make you earn gold?
  - firebase
 
 # Demo
+Demo video: [https://www.youtube.com/watch?v=vgNRxaLQzAA](https://www.youtube.com/watch?v=vgNRxaLQzAA)
+
 ![multiplayer](https://github.com/Sharpness-B/Advancer-2.0/blob/main/marketing_assets/multiplayer.gif?raw=true)
 ![gameplay](https://github.com/Sharpness-B/Advancer-2.0/blob/main/marketing_assets/main.gif?raw=true)
 ![upgrades](https://github.com/Sharpness-B/Advancer-2.0/blob/main/marketing_assets/upgrades.gif?raw=true)
-
-Demo video: [https://www.youtube.com/watch?v=vgNRxaLQzAA](https://www.youtube.com/watch?v=vgNRxaLQzAA)
 
 # How to set up locally
 Set up a firebase with a web app and a firestore - remember to allow read and write.
