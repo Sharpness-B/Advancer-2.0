@@ -32,6 +32,10 @@ Demo video: [https://www.youtube.com/watch?v=vgNRxaLQzAA](https://www.youtube.co
 # How to set up locally
 Set up a firebase with a web app and a firestore - remember to allow read and write.
 
+Get the code `git clone https://github.com/Sharpness-B/Advancer-2.0.git`
+
+Cd into the root directory `cd Advancer-2.0`
+
 Create a .env with the firebase web app config. The file should be in the root directory looking something like this:
                 
 ```.env
