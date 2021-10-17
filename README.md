@@ -16,7 +16,7 @@ You can of course blast your friends with space bullets (multiplayer), and purch
 Can you figure out what acrobatics that make you earn gold?
 
 #### Tech stack:
- - our own 3d engine
+ - our own 3d engine `public/js/libraries/flyengine & math`
  - node.js
  - express-fingerprint
  - socket.io
