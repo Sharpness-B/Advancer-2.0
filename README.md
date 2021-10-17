@@ -1,4 +1,3 @@
-#### Try the game
 Deployment: [https://advancer20.herokuapp.com/multiplayer](https://advancer20.herokuapp.com/)
 
 Code: [https://github.com/Sharpness-B/Advancer-2.0](https://github.com/Sharpness-B/Advancer-2.0)
