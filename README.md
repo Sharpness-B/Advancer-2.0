@@ -3,7 +3,7 @@ So, as I don't like uncompleted projects, I decided to continue the development 
 
 I'm incredibly happy with how this turned out - it's a 3d multiplayer game with a custom 3d library and it fricings works; it's smooth too!!!! 
 
-I would like to forward a big thanks to Kiran and Jacob for the great effort in Advancer 1.0 - when it was a school project! The challenge was to build a 3d space shooter game without a 3d engine library. So, in 1.0 we developed a story for the game, designed some spaceships and the ux, but most importantly coded our 3d engine (Jacob had the main responsibility and delivered an absolutely stunning result).
+I would like to forward a big thanks to [Kiran](https://github.com/Vaakir) and [Jacob](https://github.com/raSKTypeShit) for the great effort in Advancer 1.0 - when it was a school project! The challenge was to build a 3d space shooter game without a 3d engine library. So, in 1.0 we developed a story for the game, designed some spaceships and the ux, but most importantly coded our 3d engine (Jacob had the main responsibility and delivered an absolutely stunning result).
 
 Now, in Advancer 2.0 users are automatically fingerprinted, logged in, and registered in firestore. I've improved upon the 3d engine.
 
