@@ -1,5 +1,6 @@
 #### Try the game
 Deployment: [https://advancer20.herokuapp.com/multiplayer](https://advancer20.herokuapp.com/)
+Code: [https://github.com/Sharpness-B/Advancer-2.0](https://github.com/Sharpness-B/Advancer-2.0)
 
 # Advancer, a deadly serious 3d multiplayer game.
 So, as I don't like uncompleted projects, I decided to continue the development of Advancer.
