@@ -1,4 +1,4 @@
-Deployment: [https://advancer20.herokuapp.com/](https://advancer20.herokuapp.com/)
+Deployment: [https://advancer20.herokuapp.com](https://advancer20.herokuapp.com)
 
 Code: [https://github.com/Sharpness-B/Advancer-2.0](https://github.com/Sharpness-B/Advancer-2.0)
 
