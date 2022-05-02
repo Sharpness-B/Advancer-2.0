@@ -28,6 +28,16 @@ html, body {
     flex-direction: column;
     padding: 0;
 }
+#imgUserCount {
+    width: 400px;
+    border-radius: 30px;
+    
+    position: absolute;
+    top: -250px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%)
+}
 
 .li_option {
     display: inline-block;
