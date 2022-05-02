@@ -55,3 +55,99 @@ firebase_measurementId = G-M70N2JX0ZD
 Then `npm install`
 
 And finally `npm start`
+
+# File tree
+
+```bash
+tree /F
+```
+
+```bash
+│   .env.rename
+│   .gitignore
+│   LICENSE
+│   package-lock.json
+│   package.json
+│   README.md
+│   server.js
+│
+├───marketing_assets
+│       main.gif
+│       multiplayer.gif
+│       upgrades.gif
+│
+├───modules
+│   ├───db
+│   │       add_gold.js
+│   │       config.js
+│   │       get_user_count.js
+│   │       handle_transaction.js
+│   │       login.js
+│   │
+│   └───multiplayer
+│           game.js
+│           simple2dGame.js
+│
+└───public
+    ├───css
+    │       common.css
+    │       game.css
+    │       homepage.css
+    │       multiplayer_overlay.css
+    │
+    ├───html
+    │       homepage.html
+    │       multiplayer.html
+    │
+    ├───js
+    │   │   music.js
+    │   │
+    │   ├───homepage
+    │   │       gui.js
+    │   │       preview_model.js
+    │   │       upgrade.js
+    │   │
+    │   ├───libraries
+    │   │   ├───cookie
+    │   │   │       cookie.js
+    │   │   │
+    │   │   ├───flyengine
+    │   │   │       Camera.js
+    │   │   │       drawMethods.js
+    │   │   │       models.js
+    │   │   │       modelsConstructor.js
+    │   │   │
+    │   │   ├───math
+    │   │   │       Matrix.js
+    │   │   │       vec2.js
+    │   │   │       vec3.js
+    │   │   │
+    │   │   └───sequentialScriptInclusion
+    │   │           sequentialScriptInclusion.js
+    │   │
+    │   └───multiplayer
+    │           earn_gold.js
+    │           gui.js
+    │           multiplayer.js
+    │
+    └───media_assets
+            armor.png
+            back_arrow.svg
+            button.mp3
+            buy0.mp3
+            buy2.mp3
+            buy3.mp3
+            buy4.mp3
+            buy5.mp3
+            coinAll.mp3
+            energy.png
+            gold.png
+            insidespaceship2.png
+            laser.png
+            missile.png
+            money.png
+            music1.mp3
+            spaceship.png
+            spaceshipIcon.png
+            speed.png
+```
