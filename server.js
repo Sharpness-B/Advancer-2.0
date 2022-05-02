@@ -5,6 +5,7 @@ const firebaseConfig = require('./modules/db/config');
 const login = require('./modules/db/login');
 const handle_transaction = require('./modules/db/handle_transaction');
 const add_gold = require('./modules/db/add_gold');
+const get_user_count = require('./modules/db/get_user_count')
 
 const firebaseApp = initializeApp(firebaseConfig);
 const firestore = getFirestore(firebaseApp);
@@ -123,6 +124,34 @@ app.post('/add_gold', (req, res) => {
         }
     }())
 });
+
+
+
+// for readme
+app.get('/user_count', (req, res) => {
+    get_user_count(firestore).then(count => {
+        const spcae = "&#10240;"
+        const text = `${spcae}Unique users: ${count}${spcae}`;
+
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="449" height="60">
+            <defs>
+                <filter x="0" y="0" width="1" height="1" id="solid">
+                    <feFlood flood-color="#41c8c8" result="bg" />
+                    <feMerge>
+                        <feMergeNode in="bg"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            <text filter="url(#solid)" x="0" y="50" font-size="50" font-family="fantasy">${text}</text>
+        </svg>`
+
+        res.setHeader('Content-Type', 'image/svg+xml');
+        res.send(svg)
+    })
+})
+
+
 
 game(io);
 
