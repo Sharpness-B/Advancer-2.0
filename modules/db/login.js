@@ -4,14 +4,16 @@ async function login(firestore, fp_hash, fp_json_str) {
     const docRef = doc(firestore, "users", fp_hash);
     const docSnap = await getDoc(docRef);
 
+    let balances;
+
     // if user already exists
     if (docSnap.exists()) {
-        return docSnap.data();
+        balances = docSnap.data();
     } 
 
     // if new user
     else {
-        let balances = {
+        balances = {
             gold: 30,
     
             armor: 1,
@@ -22,11 +24,24 @@ async function login(firestore, fp_hash, fp_json_str) {
 
             fingerprint: fp_json_str
         }
-
-        await setDoc(doc(firestore, "users", fp_hash), balances); // .then(() => {return balances;});
-
-        return balances;
     }
+
+    // add login date
+    if (!balances.login_datetimes) {
+        balances.login_datetimes = []
+    }
+
+    now = new Date().toDateString()
+
+    balances.previous_login_datetime = now
+    balances.login_datetimes.push( now )
+
+    balances.number_of_visits = balances.login_datetimes.length
+    
+
+    await setDoc(doc(firestore, "users", fp_hash), balances); // .then(() => {return balances;});
+
+    return balances;
 }
 
 module.exports = login;
