@@ -4,7 +4,8 @@ Code: [https://github.com/Sharpness-B/Advancer-2.0](https://github.com/Sharpness
 
 ![user count](https://advancer20.herokuapp.com/user_count)
 
-# Advancer, a deadly serious 3d multiplayer game.
+# Advancer
+### a multiplayer 3d space shooter game with a custom graphics engine!
 So, as I don't like uncompleted projects, I decided to continue the development of Advancer.
 
 I'm incredibly happy with how this turned out - it's a 3d multiplayer game with a custom 3d library and it fricings works; it's smooth too!!!! 
