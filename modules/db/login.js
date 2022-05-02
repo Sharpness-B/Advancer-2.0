@@ -22,6 +22,10 @@ async function login(firestore, fp_hash, fp_json_str) {
             missile: 1,
             energy: 1,
 
+            login_datetimes: [],
+            previous_login_datetime: null,
+            number_of_visits: null,
+
             fingerprint: fp_json_str
         }
     }
@@ -31,7 +35,7 @@ async function login(firestore, fp_hash, fp_json_str) {
         balances.login_datetimes = []
     }
 
-    now = new Date().toDateString()
+    now = new Date()
 
     balances.previous_login_datetime = now
     balances.login_datetimes.push( now )
