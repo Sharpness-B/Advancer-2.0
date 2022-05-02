@@ -132,18 +132,19 @@ app.get('/user_count', (req, res) => {
     get_user_count(firestore).then(count => {
         const spcae = "&#10240;"
         const text = `${spcae}Unique users: ${count}${spcae}`;
+        const bg_color = "#41c8c8"
 
-        const svg = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="449" height="60">
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="466.65" height="60.16" style="border-bottom: 4px solid ${bg_color}">
             <defs>
                 <filter x="0" y="0" width="1" height="1" id="solid">
-                    <feFlood flood-color="#41c8c8" result="bg" />
+                    <feFlood flood-color="${bg_color}" result="bg" />
                     <feMerge>
                         <feMergeNode in="bg"/>
                         <feMergeNode in="SourceGraphic"/>
                     </feMerge>
                 </filter>
             </defs>
-            <text filter="url(#solid)" x="0" y="50" font-size="50" font-family="fantasy">${text}</text>
+            <text filter="url(#solid)" x="0" y="50" font-size="50" margin-bottom="5" font-family="'Ubuntu',Tahoma,'Helvetica Neue',Helvetica,Arial,sans-serif">${text}</text>
         </svg>`
 
         res.setHeader('Content-Type', 'image/svg+xml');
