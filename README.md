@@ -2,7 +2,7 @@ Deployment: [https://advancer20.herokuapp.com](https://advancer20.herokuapp.com)
 
 Code: [https://github.com/Sharpness-B/Advancer-2.0](https://github.com/Sharpness-B/Advancer-2.0)
 
-![user count](https://advancer20.herokuapp.com/user_count)
+![user count](https://advancer20.herokuapp.com/user_count?)
 
 
 ### A multiplayer 3d space shooter game with a custom graphics engine!

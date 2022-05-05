@@ -21,7 +21,6 @@ const game = require('./modules/multiplayer/game');
 
 const fingerprint = require('express-fingerprint');
 const session = require('express-session');
-const { json } = require('express/lib/response');
 
 const port = process.env.PORT || 3000;
 
@@ -147,7 +146,10 @@ app.get('/user_count', (req, res) => {
             <text filter="url(#solid)" x="0" y="50" font-size="50" margin-bottom="5" font-family="'Ubuntu',Tahoma,'Helvetica Neue',Helvetica,Arial,sans-serif">${text}</text>
         </svg>`
 
-        res.setHeader('Content-Type', 'image/svg+xml');
+        res.set({
+            'Content-Type': 'image/svg+xml',
+            'Cache-control': 'no-cache'
+        });
         res.send(svg)
     })
 })
